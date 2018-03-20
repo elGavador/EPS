@@ -19,7 +19,7 @@ class EPS {
 
 unsigned char EPS_cmd(uint8_t cmd, uint8_t data0, uint8_t data1)
 {
-  int EPS_addr = 0x2B; //factory-set address
+  int EPS_addr = 0x23; //0x2B; factory-set address
   uint8_t packet[3];
   int file;
   I2C i2c;
@@ -45,7 +45,7 @@ class I2C {
 void I2C::open(int addr)
 {
   int file;
-  int adapter_nr = ???; /* our OBC should only have one I2C adapter */
+  int adapter_nr = 1; /* our OBC should only have one I2C adapter */
   char filename[20];
   
   snprintf(filename, 19, "/dev/i2c-%d", adapter_nr);
