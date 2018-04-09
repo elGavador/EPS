@@ -2,7 +2,7 @@
 #define SLAVE_ADDRESS 8 // Define the I2C address to Communicate to Uno
 #define LENGTH 1
 
-byte response[LENGTH]; // this data is sent to PI
+byte response[LENGTH]; // this is the data to be sent to the PI
 String data0;
 uint8_t command[6]; //used to parse through the command packet
 int d0, d1;   //data0 and data1
@@ -21,15 +21,15 @@ void loop() {
   if (command[0] == 3)
   {  
     Serial.println(command[0]);
-    Wire.onRequest(sendData); // sendData is funtion called when Pi requests data
   }
   delay(100);
+  Wire.onRequest(sendData); // sendData is funtion called when Pi requests data
   memset(command,0,sizeof(command));  //reset command
   delay(1000);
 }
 void sendData(){
   //byte bytes[8];
-   response[0] = 0x20; //send back received data0
+   response[0] = 0x21; //send back received data0
   
 //  bytes[0] = myInt & 0xFF000000;
 //  Serial.println(bytes[0]);
